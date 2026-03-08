@@ -1,6 +1,6 @@
 <?php
 
-require 'Usuario.php';
+require_once 'Usuario.php';
 
 /**
  * Clase Alumno.
