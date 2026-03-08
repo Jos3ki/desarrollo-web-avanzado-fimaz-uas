@@ -15,7 +15,11 @@ class Alumno extends Usuario {
     private $vMatricula;
 
     /**
-     * Constructor que reutiliza la validación del padre.
+     * Constructor del Alumno.
+     *
+     * @param string $nombre
+     * @param string $correo
+     * @param string $matricula
      */
     public function __construct($nombre, $correo, $matricula)
     {
