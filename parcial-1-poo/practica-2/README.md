@@ -7,15 +7,15 @@
 ---
 
 ## 📌 Objetivo de la Práctica
-[cite_start]Implementar el pilar de la herencia mediante la extensión de clases en PHP, logrando la reutilización de atributos y métodos de una clase base (padre) hacia una clase derivada (hija), optimizando así la arquitectura del código[cite: 18].
+Implementar el pilar de la herencia mediante la extensión de clases en PHP, logrando la reutilización de atributos y métodos de una clase base (padre) hacia una clase derivada (hija), optimizando así la arquitectura del código.
 
 ---
 
 ## 🧬 Explicación de la herencia aplicada
 
-[cite_start]En este proyecto, la herencia se implementó utilizando la palabra reservada `extends` de PHP[cite: 35]. [cite_start]Se estableció una relación jerárquica donde la clase `Admin` actúa como la **clase hija (o subclase)** y extiende de la **clase base (o superclase)** `Usuario`[cite: 30, 32]. 
+En este proyecto, la herencia se implementó utilizando la palabra reservada `extends` de PHP. Se estableció una relación jerárquica donde la clase `Admin` actúa como la **clase hija (o subclase)** y extiende de la **clase base (o superclase)** `Usuario`. 
 
-[cite_start]Al aplicar esta arquitectura, se logró una **reutilización de código** absoluta[cite: 18, 52]. La clase `Admin` adquirió automáticamente:
+Al aplicar esta arquitectura, se logró una **reutilización de código** absoluta. La clase `Admin` adquirió automáticamente:
 1. **El Método Constructor (`__construct`):** Permitiendo instanciar un administrador pasando su nombre y correo sin tener que reescribir la lógica de inicialización.
 2. **Los Métodos de Acceso (Getters y Setters):** `Admin` puede invocar `$this->getNombre()` o `$this->getCorreo()` como si hubieran sido programados dentro de su propio archivo, respetando el encapsulamiento de los atributos privados originales de la clase base.
 
@@ -34,13 +34,13 @@ Aunque ambas clases están estrechamente relacionadas, cumplen roles distintos d
 * **Clase Derivada (`Admin`):**
   * Es una especialización de la clase `Usuario`. Es decir, "Un Admin *es un* Usuario".
   * Posee todo el comportamiento del usuario normal, pero **extiende sus capacidades** al incorporar lógica exclusiva.
-  * [cite_start]Implementa un método propio llamado `getRol()` que retorna la cadena de texto `"Administrador"`[cite: 37]. Un objeto instanciado directamente desde `Usuario` no posee este método, marcando la diferencia de comportamientos entre los niveles de jerarquía.
+  *Implementa un método propio llamado `getRol()` que retorna la cadena de texto `"Administrador"`. Un objeto instanciado directamente desde `Usuario` no posee este método, marcando la diferencia de comportamientos entre los niveles de jerarquía.
 
 ---
 
 ## 🚀 Evidencia de ejecución e Instrucciones
 
-[cite_start]Para verificar el correcto funcionamiento del código[cite: 53], siga estos pasos en un entorno local:
+Para verificar el correcto funcionamiento del código, siga estos pasos en un entorno local:
 
 ## Instrucciones de ejecución
 1. Clonar este repositorio.
@@ -56,6 +56,6 @@ Aunque ambas clases están estrechamente relacionadas, cumplen roles distintos d
 
 ### Evidencia en Video
 [![Vista previa del video](https://img.youtube.com/vi/qdJHs43xlIA/0.jpg)](https://youtu.be/qdJHs43xlIA)
-1. [cite_start]La correcta arquitectura de las clases (`extends`)[cite: 51].
+1. La correcta arquitectura de las clases (`extends`).
 2. El uso de Git para los commits por etapas.
-3. [cite_start]La salida en el navegador sin advertencias ni errores fatales[cite: 53].
+3. La salida en el navegador sin advertencias ni errores fatales.
