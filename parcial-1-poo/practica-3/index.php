@@ -1,4 +1,12 @@
 <?php
+/**
+ * Script de prueba para la Práctica 3.
+ * * Este archivo demuestra la creación de usuarios, la herencia de clases 
+ * y el manejo estructurado de excepciones (errores) utilizando bloques try/catch.
+ *
+ * @package Usuarios
+ * @author Jose Carlos
+ */
 
 require_once 'clases/Admin.php';
 require_once 'clases/Alumno.php';
