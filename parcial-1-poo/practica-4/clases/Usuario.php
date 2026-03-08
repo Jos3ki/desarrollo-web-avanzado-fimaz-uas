@@ -43,17 +43,4 @@ class Usuario {
         return $this->vCorreo;
     }
 
-     /**
-     * @param string $nuevoNombre
-     */
-    public function setNombre($nuevoNombre) {
-        $this->vNombre = $nuevoNombre;
-    }
-
-     /**
-     * @param string $nuevoCorreo
-     */
-    public function setCorreo($nuevoCorreo) {
-        $this->vCorreo = $nuevoCorreo;
-    }
 }

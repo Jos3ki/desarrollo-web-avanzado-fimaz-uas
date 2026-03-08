@@ -3,7 +3,11 @@
 require_once 'Usuario.php';
 
 /**
- * Clase Admin que hereda de Usuario.
+ * Clase que representa a un Administrador del sistema.
+ * Hereda las propiedades y métodos básicos de Usuario.
+ * @package Usuarios
+ * @version 1.0.0
+ * @author Jose Carlos
  */
 class Admin extends Usuario {
 
