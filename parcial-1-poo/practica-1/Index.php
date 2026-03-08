@@ -1,12 +1,22 @@
 <?php
 
-require 'Usuario.php'; //incluir el archivo Usuario.php en el que esta la clase y sus metodos
+/**
+ * Script de prueba y ejecución para la clase Usuario.
+ * * Este archivo demuestra la instanciación de un objeto a partir de la clase Usuario,
+ * la recuperación de su estado inicial mediante métodos Getter, y la actualización
+ * segura de sus propiedades utilizando métodos Setter aplicando encapsulamiento.
+ *
+ * @package Usuarios
+ * @author Jose Carlos
+ */
 
-$Usuario1 = new Usuario("jose", "joosec29@gmail.com"); // crear el objeto pasandole un nombre y correo 
+require 'Usuario.php'; 
 
-echo "El nombre de usaurio es: " . $Usuario1->getNombre() . " y su correo es: " . $Usuario1->getCorreo() . "\n"; //mostrar los valores iniciales con los getter 
+$Usuario1 = new Usuario("jose", "joosec29@gmail.com"); 
 
-$Usuario1->setCorreo("jose12@gmail.com"); // actualizar el correo con el set
-$Usuario1->setNombre("Carlos"); // actualizar el nombre con el set 
+echo "El nombre de usaurio es: " . $Usuario1->getNombre() . " y su correo es: " . $Usuario1->getCorreo() . "<br>"; 
 
-echo "El nombre de usaurio actualizado es: " . $Usuario1->getNombre() . " y su correo actualizado es: " . $Usuario1->getCorreo(); //mostrar los nuevos valores 
+$Usuario1->setCorreo("jose12@gmail.com"); 
+$Usuario1->setNombre("Carlos");  
+
+echo "El nombre de usaurio actualizado es: " . $Usuario1->getNombre() . " y su correo actualizado es: " . $Usuario1->getCorreo();  

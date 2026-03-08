@@ -1,30 +1,77 @@
 <?php
 
-class Usuario { //definicion de la clase usuario 
+/**
+ * Clase que gestiona la información de un usuario.
+ * @package Usuarios
+ * @version 1.0.0
+ * @author Jose Carlos
+ */
+class Usuario { 
 
-    private $Vnombre; //atributo privado nombre
-    private $Vcorreo; // atributo privado correo
+    /**
+     * El nombre del usuario.
+     *
+     * @var string
+     */
+    private $Vnombre; 
 
-    public function __construct($nombre, $correo) //constructor para inicializar el usuario
+    /**
+     * El correo electrónico del usuario.
+     *
+     * @var string
+     */
+    private $Vcorreo;
+
+    /**
+     * Registra e inicializa un nuevo usuario.
+     *
+     * @param string $nombre El nombre del usuario.
+     * @param string $correo El correo electrónico del usuario.
+     */
+    public function __construct($nombre, $correo) 
     {
         $this->Vnombre = $nombre; 
         $this->Vcorreo = $correo;
 
     }
 
-    public function getNombre(){ //get para obtener el nombre del usuario
+    /**
+     * Obtiene el nombre del usuario.
+     *
+     * @return string Retorna el nombre registrado.
+     */
+
+    public function getNombre(){ 
         return $this -> Vnombre;
     }
+    
+    /**
+     * Obtiene el correo del usuario.
+     *
+     * @return string Retorna el correo electrónico registrado.
+     */
 
-    public function getCorreo() { //get para obtener el correo del usuario
+    public function getCorreo() { 
         return $this -> Vcorreo;
     }
 
-    public function setNombre($nuevo_nombre) { //set para actualizar el nombre del usuario 
+    /**
+     * Actualiza el nombre del usuario.
+     *
+     * @param string $nuevo_nombre El nuevo nombre a asignar.
+     */
+
+    public function setNombre($nuevo_nombre) {  
         $this -> Vnombre = $nuevo_nombre;
     }
 
-    public function setCorreo($nuevo_correo) { //set para actualizar el correo del usuario
+    /**
+     * Actualiza el correo del usuario.
+     *
+     * @param string $nuevo_correo El nuevo correo a asignar.
+     */
+
+    public function setCorreo($nuevo_correo) { 
         $this -> Vcorreo = $nuevo_correo;
     }
 }
