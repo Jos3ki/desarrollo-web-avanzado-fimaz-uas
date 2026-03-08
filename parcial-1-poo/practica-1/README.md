@@ -1,5 +1,10 @@
 # Práctica de Laboratorio 1: Creación de Clases y Encapsulamiento en PHP
 
+**Asignatura:** Desarrollo Web Avanzado  
+**Autor:** Jose Carlos Castillo Padilla  
+**Institución:** Facultad de Informática Mazatlán (FIMAZ - UAS)  
+
+---
 ## Objetivo de la práctica
 *(Aplicar los fundamentos de la Programación Orientada a Objetos en PHP, implementando una clase con atributos privados, constructor y métodos de acceso, siguiendo buenas prácticas de encapsulamiento.)*
 
@@ -30,3 +35,9 @@ Para esta práctica se diseñó e implementó la clase `Usuario`, aplicando estr
 4. tener instalada las extensiones de php Intelephense y php server.
 5. tener en la variables del entorno de tu sistema la ruta a php del xampp en la mayoria de casos es C:\xampp\php para trabajar en localhost al ejecutar el php sever.
 6. ejecutar php sever para visualizar la ejecucion del archivo.
+
+### Evidencia en Video
+[![Vista previa del video](https://img.youtube.com/vi/m00etRpmiN8/0.jpg)](https://youtu.be/m00etRpmiN8)
+1. La correcta arquitectura de las clases (`extends`).
+2. El uso de Git para los commits por etapas.
+3. La salida en el navegador sin advertencias ni errores fatales.
