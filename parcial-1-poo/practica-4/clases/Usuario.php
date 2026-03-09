@@ -26,7 +26,7 @@ class Usuario {
     {
         $this->vNombre = $nombre;
 
-        if(filter_var($correo, FILTER_VALIDATE_EMAIL)){
+        if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
             throw new Exception( "correo invalido: " . $correo);
         }
 

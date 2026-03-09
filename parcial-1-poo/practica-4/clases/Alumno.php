@@ -23,7 +23,7 @@ class Alumno extends Usuario {
      */
     public function __construct($nombre, $correo, $matricula)
     {
-        parent::__construct($nombre, $matricula);
+        parent::__construct($nombre, $correo);
         $this->vMatricula = $matricula;
     }
 
