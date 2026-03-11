@@ -41,4 +41,3 @@ Al ejecutar el archivo `index.php`, el sistema realiza una simulación de regist
 ### 🎥 Video Demostrativo
 Como parte de los lineamientos de evaluación de la práctica, se anexa el siguiente video demostrativo alojado en YouTube, evidenciando el funcionamiento sin errores y la estructura del repositorio:
 
-[![Vista previa del video](https://img.youtube.com/vi/i9110AoTqbU/0.jpg)](https://www.youtube.com/watch?v=i9110AoTqbU)
