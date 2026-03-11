@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Examen Práctico - Parcial 1 (POO en PHP)
+ * @author Jose Carlos Castillo Padilla
+ */
+
 require_once 'clases/Admin.php';
 require_once 'clases/Alumno.php';
 
@@ -16,7 +21,7 @@ $objAlumno = new Alumno("sebas", "sebitas@gmail.com", "12131415");
 
 $Ausuarios[] = $objAlumno;
 
-$objInvalido = new Alumno("Usuario", "correo.com", "1213141312");
+$objInvalido = new Alumno("Usuario", " correo.com", "1213141312");
 
 } catch (Exception $e) {
     $mensajeError = "Error controlado: " . $e->getMessage();
