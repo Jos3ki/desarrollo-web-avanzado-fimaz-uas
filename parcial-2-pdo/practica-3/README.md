@@ -2,11 +2,12 @@
 
 ## 👤 Autor
 
-|---|---|
-| **Estudiante** | Jose Carlos Castillo Padilla |
-| **Docente** | Dr. José Alfonso Aguilar Calderón |
+|                 |                                                |
+| --------------- | ---------------------------------------------- |
+| **Estudiante**  | Jose Carlos Castillo Padilla                   |
+| **Docente**     | Dr. José Alfonso Aguilar Calderón              |
 | **Institución** | Facultad de Informática Mazatlán (FIMAZ - UAS) |
-| **Materia** | Desarrollo Web Avanzado |
+| **Materia**     | Desarrollo Web Avanzado                        |
 
 ---
 
