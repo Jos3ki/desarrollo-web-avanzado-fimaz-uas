@@ -2,7 +2,6 @@
 
 ## 👤 Autor
 
-| Campo | Detalle |
 |---|---|
 | **Estudiante** | Jose Carlos Castillo Padilla |
 | **Docente** | Dr. José Alfonso Aguilar Calderón |
@@ -28,11 +27,11 @@ El objetivo de esta práctica es implementar el manejo robusto de errores median
 
 ## 🛠️ Conceptos Clave
 
-| Método | Función |
-|---|---|
-| `beginTransaction()` | Inicia el modo de transacción (desactiva el autocommit). |
-| `commit()` | Guarda permanentemente todos los cambios realizados en la transacción. |
-| `rollBack()` | Deshace todos los cambios realizados desde que se inició la transacción. |
+| Método               | Función                                                                  |
+| -------------------- | ------------------------------------------------------------------------ |
+| `beginTransaction()` | Inicia el modo de transacción (desactiva el autocommit).                 |
+| `commit()`           | Guarda permanentemente todos los cambios realizados en la transacción.   |
+| `rollBack()`         | Deshace todos los cambios realizados desde que se inició la transacción. |
 
 ---
 
@@ -41,7 +40,7 @@ El objetivo de esta práctica es implementar el manejo robusto de errores median
 Ejecuta el siguiente script SQL para preparar el entorno de la práctica:
 
 ```sql
-CREATE DATABASE IF NOT EXISTS escuela 
+CREATE DATABASE IF NOT EXISTS escuela
 CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 USE escuela;
@@ -89,6 +88,6 @@ http://localhost/practica-transacciones/index.php
 
 1. **Prueba de Éxito (COMMIT):** Registra un alumno sin marcar el checkbox. Verás que el registro aparece tanto en la tabla de `alumnos` como en la de `logs_alumnos`.
 
-2. **Prueba de Error (ROLLBACK):** Marca *"Simular error"* y registra un alumno. El sistema lanzará una excepción y, gracias al `rollBack()`, la base de datos quedará intacta — no se guardará nada.
+2. **Prueba de Error (ROLLBACK):** Marca _"Simular error"_ y registra un alumno. El sistema lanzará una excepción y, gracias al `rollBack()`, la base de datos quedará intacta — no se guardará nada.
 
 3. **Restricción Unique:** Intenta registrar dos veces el mismo correo para observar cómo el bloque `catch` captura el error de duplicidad de SQL.
