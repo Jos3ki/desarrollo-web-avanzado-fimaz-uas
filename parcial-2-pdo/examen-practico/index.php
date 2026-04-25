@@ -52,6 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mensaje = "Error al agregar el producto.";
         }
     }
+
+    if ($terminoBusqueda !== '') {
+        $productos = $controller->buscar($terminoBusqueda);
+    } else {
+        $productos = $controller->listar();
+    }
 }
 
 $productos = $controller->listar();
