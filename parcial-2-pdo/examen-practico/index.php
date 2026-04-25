@@ -1,4 +1,16 @@
 <?php
+
+/**
+ * Vista Principal - CRUD de Productos.
+ *
+ * Este archivo actúa como el punto de entrada (Frontend Controller) del módulo.
+ * Gestiona las peticiones GET para eliminación y edición, las peticiones POST 
+ * para persistencia de datos y renderiza la interfaz de usuario mediante Bootstrap.
+ *
+ * @package    App\Views
+ * @author     Jose Carlos Castillo Padilla
+ * @version    1.0.0
+ */
 require_once 'controllers/ProductoController.php';
 
 $controller = new ProductoController();

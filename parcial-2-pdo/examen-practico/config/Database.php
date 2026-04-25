@@ -1,4 +1,12 @@
 <?php
+
+/**
+ * Gestión de conexiones a base de datos.
+ *
+ * @package    App\Database
+ * @author     Jose Carlos Castillo Padilla
+ * @version    1.0.0
+ */
 class Database {
     private $host = "localhost";
     private $dbname = "phppdobd";
