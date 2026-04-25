@@ -6,6 +6,8 @@ $controller = new ProductoController();
 $mensaje = "";
 $productoEditar = null;
 
+$terminoBusqueda = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
+
 // ELIMINAR
 if (isset($_GET['eliminar'])) {
     $idEliminar = $_GET['eliminar'];
