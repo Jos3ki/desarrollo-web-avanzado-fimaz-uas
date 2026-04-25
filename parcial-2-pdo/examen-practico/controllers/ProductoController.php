@@ -12,8 +12,11 @@
  * @version    1.0.0
  */
 
-require_once __DIR__ . '/../config/Database.php';
-require_once __DIR__ . '/../models/Producto.php';
+namespace App\Controllers;
+
+use App\Config\Database;
+use App\Models\Producto;
+use PDO;
 
 class ProductoController {
     

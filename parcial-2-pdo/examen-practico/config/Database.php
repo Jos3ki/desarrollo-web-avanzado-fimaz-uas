@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Config;
+
+use PDO;
+use PDOException;
+
 /**
  * Gestión de conexiones a base de datos.
  *

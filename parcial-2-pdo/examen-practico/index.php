@@ -11,69 +11,93 @@
  * @author     Jose Carlos Castillo Padilla
  * @version    1.0.0
  */
-require_once 'controllers/ProductoController.php';
 
-$controller = new ProductoController();
+spl_autoload_register(function ($class) {
+    $prefix = 'App\\';
+    if (strpos($class, $prefix) !== 0) {
+        return;
+    }
+
+    $relativeClass = substr($class, strlen($prefix));
+    $parts = explode('\\', $relativeClass);
+
+    if (count($parts) < 2) {
+        return;
+    }
+
+    $directory = strtolower(array_shift($parts));
+    $file = __DIR__ . DIRECTORY_SEPARATOR . $directory . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $parts) . '.php';
+
+    if (file_exists($file)) {
+        require_once $file;
+    }
+});
+
+use App\Controllers\ProductoController;
+use App\Models\Producto;
 
 $mensaje = "";
 $productoEditar = null;
-
+$productos = [];
 $terminoBusqueda = isset($_GET['buscar']) ? trim($_GET['buscar']) : '';
 
-// ELIMINAR
-if (isset($_GET['eliminar'])) {
-    $idEliminar = $_GET['eliminar'];
-    if ($controller->eliminar($idEliminar)) {
-        $mensaje = "Producto eliminado correctamente.";
-    } else {
-        $mensaje = "Error al eliminar el producto.";
-    }
-}
+try {
+    $controller = new ProductoController();
 
-// EDITAR: CARGAR DATOS EN FORMULARIO
-if (isset($_GET['editar'])) {
-    $idEditar = $_GET['editar'];
-    $productoEditar = $controller->obtenerPorId($idEditar);
-}
-
-// GUARDAR O ACTUALIZAR
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = !empty($_POST['id']) ? $_POST['id'] : null;
-    $nombre = trim($_POST['nombre']);
-    $descripcion = trim($_POST['descripcion']);
-    $existencia = (int) $_POST['existencia'];
-    $precio = (float) $_POST['precio'];
-
-    $producto = new Producto();
-    $producto->setId($id);
-    $producto->setNombre($nombre);
-    $producto->setDescripcion($descripcion);
-    $producto->setExistencia($existencia);
-    $producto->setPrecio($precio);
-
-    if ($id) {
-        if ($controller->actualizar($producto)) {
-            $mensaje = "Producto actualizado correctamente.";
+    // ELIMINAR
+    if (isset($_GET['eliminar'])) {
+        $idEliminar = $_GET['eliminar'];
+        if ($controller->eliminar($idEliminar)) {
+            $mensaje = "Producto eliminado correctamente.";
         } else {
-            $mensaje = "Error al actualizar el producto.";
-        }
-    } else {
-        if ($controller->crear($producto)) {
-            $mensaje = "Producto agregado correctamente.";
-        } else {
-            $mensaje = "Error al agregar el producto.";
+            $mensaje = "Error al eliminar el producto.";
         }
     }
 
-   
-}
+    // EDITAR: CARGAR DATOS EN FORMULARIO
+    if (isset($_GET['editar'])) {
+        $idEditar = $_GET['editar'];
+        $productoEditar = $controller->obtenerPorId($idEditar);
+    }
 
- if ($terminoBusqueda !== '') {
+    // GUARDAR O ACTUALIZAR
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = !empty($_POST['id']) ? $_POST['id'] : null;
+        $nombre = trim($_POST['nombre']);
+        $descripcion = trim($_POST['descripcion']);
+        $existencia = (int) $_POST['existencia'];
+        $precio = (float) $_POST['precio'];
+
+        $producto = new Producto();
+        $producto->setId($id);
+        $producto->setNombre($nombre);
+        $producto->setDescripcion($descripcion);
+        $producto->setExistencia($existencia);
+        $producto->setPrecio($precio);
+
+        if ($id) {
+            if ($controller->actualizar($producto)) {
+                $mensaje = "Producto actualizado correctamente.";
+            } else {
+                $mensaje = "Error al actualizar el producto.";
+            }
+        } else {
+            if ($controller->crear($producto)) {
+                $mensaje = "Producto agregado correctamente.";
+            } else {
+                $mensaje = "Error al agregar el producto.";
+            }
+        }
+    }
+
+    if ($terminoBusqueda !== '') {
         $productos = $controller->buscar($terminoBusqueda);
     } else {
         $productos = $controller->listar();
     }
-$productos = $controller->listar();
+} catch (\Throwable $e) {
+    $mensaje = "Ocurrió un error: " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>

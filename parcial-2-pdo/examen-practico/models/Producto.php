@@ -11,6 +11,7 @@
  * @author     Jose Carlos Castillo Padilla
  * @version    1.0.0
  */
+namespace App\Models;
 class Producto {
     private $id;
     private $nombre;
