@@ -2,7 +2,7 @@
 
     require_once("../../config/DataBase.php");
 
-    class torneoModel {
+    class torneosModel {
         public $PDO;
 
         public function __construct()
@@ -16,8 +16,8 @@
 
             $contrasena = $this->passwordEncrypt($contrasena);
 
-            $stmt = $this->PDO->prepare("INSERT INTO torneo VALUES(null, :nombreTorneo, :organizador, :patrocinadores, :sede, :categoria, 
-            :premio1, :premio2,:otroPremio, :premio3, :usuario, :contrasena )");
+            $stmt = $this->PDO->prepare("INSERT INTO torneos VALUES(null, :nombreTorneo, :organizador, :patrocinadores, :sede, :categoria, 
+            :premio1, :premio2, :premio3, :otroPremio, :usuario, :contrasena )");
 
             $stmt->bindParam(":nombreTorneo", $nombreTorneo);
             $stmt->bindParam(":organizador", $organizador);
@@ -42,6 +42,11 @@
 
         public function passwordDencrypted($passwordEncrypted, $passwordCandidate) {
             (password_verify($passwordCandidate, $passwordEncrypted)) ? true : false ;
+        }
+
+        public function read() {
+            $stmt = $this->PDO->prepare("SELECT * FROM torneos");
+            return ($stmt->execute()) ? $stmt->fetchAll() : false;
         }
     }
 ?>
