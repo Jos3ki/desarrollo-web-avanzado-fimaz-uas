@@ -75,7 +75,7 @@
                     </div>
                     <div class="col mb-3">
                         <label for="contrasena" class="form-label">CONTRASEÑA</label>
-                        <input type="text" name="txtContrasena" id="contrasena" class="form-control">
+                        <input type="password" name="txtContrasena" id="contrasena" class="form-control">
                     </div>
                 </div>
                 <div class="col mb-3">
