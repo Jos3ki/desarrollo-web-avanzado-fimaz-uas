@@ -1,13 +1,16 @@
 <?php
     require_once("../admin/template/header.php");
 ?>
-
+<div class="mx-auto p-5">
     <div class="card">
         <div class="card-header">
-            CAPTURAR LA INFORMACION DEL TORNEO.
+            <span class="d-inline-flex align-items-center gap-2">
+                <i class="fa-solid fa-trophy"></i>
+                <span>CAPTURAR LA INFORMACION DEL TORNEO.</span>
+            </span>
         </div>
         <div class="card-body">
-            <form action="" method="post">
+            <form action="torneosInsert.php" method="post">
                 <div class="mb-3">
                     <label for="nombreTorneo" class="form-label">NOMBRE DEL TORNEO</label>
                     <input type="text" class="form-control" name="txtnombreTorneo" id="nombreTorneo">
@@ -25,8 +28,8 @@
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <label for="categoria" class="form-label">SEDE (cancha)</label>
-                        <input type="text" name="txtCategoria" id="categoria" class="form-control" >
+                        <label for="sede" class="form-label">SEDE (cancha)</label>
+                        <input type="text" name="txtSede" id="sede" class="form-control" >
                     </div>
                     <div class="col mb-3">
                         <label for="categoria" class="form-label"> CATEGORIA</label>
@@ -75,13 +78,17 @@
                         <input type="text" name="txtContrasena" id="contrasena" class="form-control">
                     </div>
                 </div>
+                <div class="col mb-3">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="admin.php" class="btn btn-danger">Cancelar</a>
+                </div>
             </form>
         </div>
         <div class="card-footer text-body-secondary">
             FORMULARIO PARA REGISTRAR TORNEOS
         </div>
     </div>
-
+</div>
 <?php
     require_once("../admin/template/footer.php");
 ?>

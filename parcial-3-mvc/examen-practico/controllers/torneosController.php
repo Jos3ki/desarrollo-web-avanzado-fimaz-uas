@@ -21,7 +21,24 @@
         }
 
         public function readTorneo() {
-            return ($this->model->read()) ? $this->model->read() : false;
+            $rows = $this->model->read();
+            return $rows ? $rows : false;
+        }
+
+        public function readOneTorneo($id){
+            $torneo = $this->model->readOne($id);
+            return ($torneo != false) ? $torneo : header("Location: admin.php");
+        }
+
+        public function updateTorneo($id, $nombreTorneo, $organizador, $patrocinadores, $sede, $categoria, $premio1, $premio2,
+         $premio3, $otroPremio){
+            ($this->model->update($id, $nombreTorneo, $organizador, $patrocinadores, $sede, $categoria, $premio1, $premio2,
+         $premio3, $otroPremio)) !=false ? header("Location: readOneTorneo.php?id=".$id) : header("Location: readAllTorneos.php"); 
+
+        }
+
+        public function delete($id){
+            return ($this->model->delete($id)) ? header("Location: readAllTorneos.php") : header("Location: readOneTorneo.php?id=".$id);
         }
     }
 
