@@ -14,7 +14,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>Desarrollo Web Avanzado: POO+PDO-TryCatch-Namespaces-Autoload-Transacciones-MVC</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts: Inter para un look moderno -->
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -29,6 +31,12 @@ if (session_status() === PHP_SESSION_NONE) {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: #1e293b;
+        }
+
+        /* Quitar el borde azul por defecto de Bootstrap y poner uno mas sutil */
+        .form-control:focus, .btn:focus {
+            box-shadow: none !important;
+            border-color: #cbd5e1 !important;
         }
 
         body {
