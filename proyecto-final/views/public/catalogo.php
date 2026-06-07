@@ -24,16 +24,42 @@
         <?php foreach ($productos as $producto): ?>
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
-                    <?php if (!empty($producto['imagen'])): ?>
-                        <img src="<?= BASE_URL ?>/uploads/<?= htmlspecialchars($producto['imagen']); ?>"
-                             class="card-img-top catalogo-card-img" alt="<?= htmlspecialchars($producto['nombre']); ?>">
-                    <?php endif; ?>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= htmlspecialchars($producto['nombre']); ?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted">SKU: <?= htmlspecialchars($producto['sku']); ?></h6>
-                        <p class="card-text"><?= htmlspecialchars($producto['descripcion']); ?></p>
-                        <p><strong>Precio:</strong> $<?= number_format((float)$producto['precio_venta'], 2); ?></p>
-                        <p><strong>Existencia:</strong> <?= (int)$producto['existencia']; ?></p>
+                    <!-- Contenedor de Imagen con Badge de Precio -->
+                    <div class="position-relative bg-light d-flex align-items-center justify-content-center p-3" style="height: 220px;">
+                        <?php if (!empty($producto['imagen'])): ?>
+                            <img src="<?= BASE_URL ?>/uploads/<?= htmlspecialchars($producto['imagen']); ?>"
+                                 class="img-fluid" alt="<?= htmlspecialchars($producto['nombre']); ?>"
+                                 style="max-height: 100%; object-fit: contain;">
+                        <?php else: ?>
+                            <div class="text-muted small italic">Sin imagen</div>
+                        <?php endif; ?>
+                        
+                        <!-- Badge de Precio Flotante -->
+                        <div class="position-absolute top-0 end-0 m-2">
+                            <span class="badge bg-success fs-6 shadow-sm">
+                                $<?= number_format((float)$producto['precio_venta'], 2); ?>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="card-body d-flex flex-column">
+                        <div class="mb-2">
+                            <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem; letter-spacing: 1px;">
+                                SKU: <?= htmlspecialchars($producto['sku']); ?>
+                            </small>
+                            <h5 class="card-title mb-1 fw-bold"><?= htmlspecialchars($producto['nombre']); ?></h5>
+                        </div>
+                        
+                        <p class="card-text text-muted small flex-grow-1">
+                            <?= mb_strimwidth(htmlspecialchars($producto['descripcion']), 0, 100, "..."); ?>
+                        </p>
+                        
+                        <div class="mt-3 pt-2 border-top">
+                            <small class="d-block text-muted" style="font-size: 0.75rem;">Existencia</small>
+                            <span class="fw-bold <?= (int)$producto['existencia'] > 0 ? 'text-dark' : 'text-danger'; ?>">
+                                <?= (int)$producto['existencia']; ?> unidades disponibles
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

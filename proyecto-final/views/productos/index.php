@@ -8,49 +8,59 @@
     </div>
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="table table-hover align-middle border">
     <thead class="table-dark">
         <tr>
-            <th>ID</th>
+            <th class="text-center">ID</th>
             <th>Imagen</th>
             <th>SKU</th>
             <th>Nombre</th>
-            <th>Precio compra</th>
-            <th>Precio venta</th>
-            <th>Existencia</th>
-            <th>Acciones</th>
+            <th class="text-end">Precio Compra</th>
+            <th class="text-end">Precio Venta</th>
+            <th class="text-center">Stock</th>
+            <th class="text-center">Acciones</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($productos as $producto): ?>
             <tr>
-                <td><?= (int)$producto['id']; ?></td>
+                <td class="text-center text-muted small"><?= (int)$producto['id']; ?></td>
                 <td>
                     <?php if (!empty($producto['imagen'])): ?>
                         <img src="<?= BASE_URL ?>/uploads/<?= htmlspecialchars($producto['imagen']); ?>"
                              alt="<?= htmlspecialchars($producto['nombre']); ?>"
-                             class="img-thumbnail producto-thumb-img">
+                             class="producto-thumb-img shadow-sm">
                     <?php else: ?>
-                        <span class="text-muted">Sin imagen</span>
+                        <div class="bg-light d-flex align-items-center justify-content-center producto-thumb-img text-muted small italic">
+                            N/A
+                        </div>
                     <?php endif; ?>
                 </td>
-                <td><?= htmlspecialchars($producto['sku']); ?></td>
+                <td class="fw-semibold small"><?= htmlspecialchars($producto['sku']); ?></td>
                 <td><?= htmlspecialchars($producto['nombre']); ?></td>
-                <td><?= number_format((float)$producto['precio_compra'], 2); ?></td>
-                <td><?= number_format((float)$producto['precio_venta'], 2); ?></td>
-                <td><?= (int)$producto['existencia']; ?></td>
-                <td>
-                    <a href="<?= BASE_URL ?>/productos/edit/<?= (int)$producto['id']; ?>"
-                       class="btn btn-primary btn-sm">Editar</a>
+                <td class="text-end">$<?= number_format((float)$producto['precio_compra'], 2); ?></td>
+                <td class="text-end fw-bold text-success">$<?= number_format((float)$producto['precio_venta'], 2); ?></td>
+                <td class="text-center">
+                    <span class="badge <?= (int)$producto['existencia'] > 0 ? 'bg-light text-dark border' : 'bg-danger'; ?>">
+                        <?= (int)$producto['existencia']; ?>
+                    </span>
+                </td>
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="<?= BASE_URL ?>/productos/edit/<?= (int)$producto['id']; ?>"
+                           class="btn btn-outline-primary btn-sm">
+                           Editar
+                        </a>
 
-                    <form action="<?= BASE_URL ?>/productos/delete" method="POST" class="d-inline">
-                        <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
-                        <input type="hidden" name="id" value="<?= (int)$producto['id']; ?>">
-                        <button type="submit" class="btn btn-danger btn-sm"
-                                onclick="return confirm('¿Deseas eliminar este producto?');">
-                            Eliminar
-                        </button>
-                    </form>
+                        <form action="<?= BASE_URL ?>/productos/delete" method="POST" class="d-inline">
+                            <input type="hidden" name="csrf_token" value="<?= csrf_token(); ?>">
+                            <input type="hidden" name="id" value="<?= (int)$producto['id']; ?>">
+                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('¿Deseas eliminar este producto?');">
+                                Eliminar
+                            </button>
+                        </form>
+                    </div>
                 </td>
             </tr>
         <?php endforeach; ?>

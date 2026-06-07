@@ -5,49 +5,44 @@ if (!defined('BASE_URL')) {
 ?>
     </div><!-- .container (opened in header) -->
 
-    <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
-        <div class="container text-center text-md-start">
+    <footer class="bg-dark text-white pt-4 pb-2 mt-auto border-top border-secondary">
+        <div class="container">
             <div class="row text-center text-md-start">
                 <!-- Columna: Logos y Nombre -->
-                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-                    <div class="mb-4">
-                        <img src="<?= BASE_URL ?>/views/img/UAS.png" alt="UAS" class="footer-brand-img me-2">
-                        <img src="<?= BASE_URL ?>/views/img/FIMAZ.png" alt="FIMAZ" class="footer-brand-img">
+                <div class="col-md-4 col-lg-4 mx-auto mt-2">
+                    <div class="mb-2">
+                        <img src="<?= BASE_URL ?>/views/img/UAS.png" alt="UAS" class="footer-brand-img me-2" style="max-height: 40px;">
+                        <img src="<?= BASE_URL ?>/views/img/FIMAZ.png" alt="FIMAZ" class="footer-brand-img" style="max-height: 40px;">
                     </div>
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Tienda MVC</h5>
-                    <p>Proyecto final de Desarrollo Web Avanzado. Sistema de catálogo y administración de productos.</p>
+                    <h6 class="text-uppercase mb-2 fw-bold text-warning small">Tienda MVC</h6>
+                    <p class="small text-white-50">Sistema académico de catálogo y administración de productos.</p>
                 </div>
 
-                <!-- Columna: Enlaces rápidos o Info -->
-                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Tecnologías</h5>
-                    <ul class="list-unstyled">
-                        <li><p>PHP 8+ (POO & PDO)</p></li>
-                        <li><p>Arquitectura MVC</p></li>
-                        <li><p>MySQL (Transacciones)</p></li>
-                        <li><p>Bootstrap 5.3</p></li>
-                    </ul>
+                <!-- Columna: Info -->
+                <div class="col-md-4 col-lg-4 mx-auto mt-2">
+                    <h6 class="text-uppercase mb-2 fw-bold text-warning small">Tecnologías</h6>
+                    <p class="small mb-1 text-white-50">PHP 8 (MVC) & MySQL</p>
+                    <p class="small mb-1 text-white-50">Bootstrap 5.3 & PDO</p>
                 </div>
 
-                <!-- Columna: Contacto/Ubicación -->
-                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contacto Académico</h5>
-                    <p>Universidad Autónoma de Sinaloa</p>
-                    <p>Facultad de Informática Mazatlán</p>
-                    <p>Junio, 2026</p>
+                <!-- Columna: Ubicación -->
+                <div class="col-md-4 col-lg-4 mx-auto mt-2">
+                    <h6 class="text-uppercase mb-2 fw-bold text-warning small">Institución</h6>
+                    <p class="small mb-1 text-white-50">Universidad Autónoma de Sinaloa</p>
+                    <p class="small mb-1 text-white-50">Facultad de Informática Mazatlán</p>
                 </div>
             </div>
 
-            <hr class="mb-4">
+            <hr class="my-3 opacity-25">
 
-            <div class="row align-items-center">
-                <div class="col-md-7 col-lg-8">
-                    <p> <?= date('Y'); ?> Facultad de Informatica Mazatlan
-                        <strong class="text-warning">Desarrollo Web Avanzado - UAS</strong>
+            <div class="row align-items-center pb-2">
+                <div class="col-md-8">
+                    <p class="small mb-0 text-white-50">
+                        © <?= date('Y'); ?> <span class="text-warning">Desarrollo Web Avanzado</span> - Proyecto Académico.
                     </p>
                 </div>
-                <div class="col-md-5 col-lg-4">
-                    <p class="text-md-end text-muted">Versión 1.0.0</p>
+                <div class="col-md-4 text-md-end">
+                    <p class="small mb-0 text-muted" style="font-size: 0.75rem;">Versión 1.0.0</p>
                 </div>
             </div>
         </div>
