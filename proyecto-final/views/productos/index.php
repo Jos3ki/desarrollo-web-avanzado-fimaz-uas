@@ -72,7 +72,7 @@
         <ul class="pagination justify-content-center">
             <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
                 <li class="page-item <?= $i === $pagina ? 'active' : ''; ?>">
-                    <a class="page-link" href="<?= BASE_URL ?>/productos?page=<?= $i; ?>">
+                    <a class="page-link" href="<?= BASE_URL ?>/productos/page/<?= $i; ?>">
                         <?= $i; ?>
                     </a>
                 </li>

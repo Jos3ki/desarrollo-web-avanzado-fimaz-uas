@@ -72,12 +72,12 @@
 </div>
 
 <?php if (!empty($totalPaginas) && $totalPaginas > 1): ?>
-    <?php $terminoUrl = $termino !== '' ? '&buscar=' . urlencode($termino) : ''; ?>
+    <?php $terminoUrl = $termino !== '' ? '?buscar=' . urlencode($termino) : ''; ?>
     <nav aria-label="Paginación del catálogo">
         <ul class="pagination justify-content-center">
             <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
                 <li class="page-item <?= $i === $pagina ? 'active' : ''; ?>">
-                    <a class="page-link" href="<?= BASE_URL ?>/catalogo?page=<?= $i; ?><?= $terminoUrl; ?>">
+                    <a class="page-link" href="<?= BASE_URL ?>/catalogo/page/<?= $i; ?><?= $terminoUrl; ?>">
                         <?= $i; ?>
                     </a>
                 </li>

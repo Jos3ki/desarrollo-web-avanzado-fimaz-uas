@@ -14,5 +14,11 @@ RewriteRule ^productos/edit/([0-9]+)/?$ index.php?route=productos/edit&id=$1 [L,
 # Ruta API con id (GET)
 RewriteRule ^api/productos/([0-9]+)/?$ index.php?route=api/productos&id=$1 [L,QSA]
 
+# Paginación amigable del catálogo
+RewriteRule ^catalogo/page/([0-9]+)/?$ index.php?route=catalogo&page=$1 [L,QSA]
+
+# Paginación amigable de productos admin
+RewriteRule ^productos/page/([0-9]+)/?$ index.php?route=productos&page=$1 [L,QSA]
+
 # Rutas amigables generales
 RewriteRule ^(.+?)/?$ index.php?route=$1 [L,QSA]
