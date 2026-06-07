@@ -3,57 +3,57 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', '');
 }
 ?>
-    </div>
+    </div><!-- .container (opened in header) -->
 
-    <footer class="bg-dark text-light mt-5 pt-5">
-        <div class="container pb-4">
-            <div class="row g-4 align-items-start">
-                <div class="col-12 col-lg-4">
-                    <div class="d-flex flex-wrap gap-3 align-items-center mb-3">
-                        <img src="<?= BASE_URL ?>/views/img/UAS.png" alt="Universidad Autónoma de Sinaloa" class="footer-brand-img">
-                        <img src="<?= BASE_URL ?>/views/img/FIMAZ.png" alt="Facultad de Informática y Matemáticas" class="footer-brand-img">
+    <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
+        <div class="container text-center text-md-start">
+            <div class="row text-center text-md-start">
+                <!-- Columna: Logos y Nombre -->
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <div class="mb-4">
+                        <img src="<?= BASE_URL ?>/views/img/UAS.png" alt="UAS" class="footer-brand-img me-2">
+                        <img src="<?= BASE_URL ?>/views/img/FIMAZ.png" alt="FIMAZ" class="footer-brand-img">
                     </div>
-                    <h5 class="mb-2">Catálogo de tienda MVC</h5>
-                    <p class="text-light text-opacity-75 mb-0">
-                        Sistema académico de catálogo y administración de productos con enfoque en presentación clara,
-                        búsqueda rápida y control de inventario.
-                    </p>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Tienda MVC</h5>
+                    <p>Proyecto final de Desarrollo Web Avanzado. Sistema de catálogo y administración de productos.</p>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h6 class="text-uppercase text-warning fw-semibold mb-3">Sobre el proyecto</h6>
-                    <ul class="list-unstyled text-light text-opacity-75 mb-0">
-                        <li class="mb-2">Catálogo público de productos con imágenes, precio y existencia.</li>
-                        <li class="mb-2">Panel administrativo para altas, ediciones y eliminaciones.</li>
-                        <li class="mb-2">Búsqueda por nombre o descripción y paginación.</li>
-                        <li class="mb-2">Validación de formularios, CSRF y bitácora de acciones.</li>
+                <!-- Columna: Enlaces rápidos o Info -->
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Tecnologías</h5>
+                    <ul class="list-unstyled">
+                        <li><p>PHP 8+ (POO & PDO)</p></li>
+                        <li><p>Arquitectura MVC</p></li>
+                        <li><p>MySQL (Transacciones)</p></li>
+                        <li><p>Bootstrap 5.3</p></li>
                     </ul>
                 </div>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <h6 class="text-uppercase text-warning fw-semibold mb-3">Entrega académica</h6>
-                    <ul class="list-unstyled text-light text-opacity-75 mb-0">
-                        <li class="mb-2">Desarrollo Web Avanzado.</li>
-                        <li class="mb-2">Patrón MVC con PHP y PDO.</li>
-                        <li class="mb-2">Bootstrap 5 para la interfaz.</li>
-                        <li class="mb-2">Proyecto enfocado en un catálogo de tienda.</li>
-                    </ul>
+                <!-- Columna: Contacto/Ubicación -->
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contacto Académico</h5>
+                    <p>Universidad Autónoma de Sinaloa</p>
+                    <p>Facultad de Informática Mazatlán</p>
+                    <p>Junio, 2026</p>
                 </div>
             </div>
-        </div>
 
-        <div class="border-top border-secondary">
-            <div class="container py-3">
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
-                    <small class="text-light text-opacity-75">
-                        &copy; <?= date('Y'); ?> Catálogo de tienda MVC. Todos los derechos reservados.
-                    </small>
-                    <small class="text-light text-opacity-50">
-                        Hecho para la entrega del proyecto académico.
-                    </small>
+            <hr class="mb-4">
+
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p> <?= date('Y'); ?> Facultad de Informatica Mazatlan
+                        <strong class="text-warning">Desarrollo Web Avanzado - UAS</strong>
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <p class="text-md-end text-muted">Versión 1.0.0</p>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
