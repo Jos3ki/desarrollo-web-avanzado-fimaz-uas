@@ -1,165 +1,95 @@
-﻿# Sistema MVC PHP – CastilloPadilla
+# Sistema MVC PHP – Tienda Profesional
 
-Proyecto académico en PHP con patrón MVC, PDO, sesiones, validaciones y seguridad básica. Incluye catálogo público con búsqueda, panel de administración con CRUD de productos, subida de imágenes, paginación, protección CSRF y bitácora de acciones del administrador.
+Proyecto académico avanzado en PHP que implementa un sistema de catálogo y administración de productos bajo el patrón **MVC**, utilizando **POO** y **PDO** con transacciones. El sistema destaca por su enfoque en seguridad, URLs amigables y una interfaz profesional moderna.
 
-## ✅ Funcionalidades principales
-1. **Catálogo público** con búsqueda por nombre/descripcion y paginación.
-2. **Panel admin** con CRUD de productos, validaciones y subida de imágenes.
-3. **Rutas amigables** con `.htaccess`.
-4. **Protección CSRF** en formularios POST.
-5. **Bitácora de acciones** del administrador (login, logout, crear/editar/eliminar).
+## ✅ Funcionalidades Principales
+1.  **Catálogo Público Moderno**: Diseño de tarjetas verticales con jerarquía visual, búsqueda dinámica y badges de precio/stock.
+2.  **API REST Profesional**: Endpoints en formato JSON para consulta de productos, búsqueda y detalles por ID, cumpliendo estándares académicos de 2026.
+3.  **Panel de Administración**: CRUD completo con validaciones de negocio (precios, stock, SKU único) y gestión de imágenes.
+4.  **URLs Amigables (SEO)**: Navegación limpia mediante `.htaccess` (ej. `/catalogo/page/1` en lugar de parámetros feos).
+5.  **Seguridad Robusta**: 
+    - Protección contra ataques **CSRF** con tokens de sesión.
+    - Prevención de **Inyección SQL** mediante sentencias preparadas (PDO).
+    - Validación estricta de archivos (imágenes).
+6.  **Bitácora de Acciones**: Registro detallado de cada movimiento administrativo (Login, Logout, CRUD) para auditoría.
 
 ## 🧱 Tecnologías
-- PHP (POO + PDO)
-- MySQL
-- Bootstrap 5
-- Apache (mod_rewrite)
+- **Backend**: PHP 8+ (MVC, POO, PDO, Namespaces, Autoload).
+- **Base de Datos**: MySQL (Transacciones ACID).
+- **Frontend**: Bootstrap 5.3, Google Fonts (Inter), Font Awesome 6.
+- **Servidor**: Apache (mod_rewrite).
 
-## 📂 Estructura MVC
+## 📂 Estructura del Proyecto
 ```
-config/        # Conexión y autoload
-controllers/   # Controladores (Auth, Productos, Público)
-models/        # Modelos (Usuario, Producto, Bitácora)
-views/         # Vistas (layout, auth, productos, catálogo)
-uploads/       # Imágenes de productos (se crea automáticamente)
-index.php      # Router principal
-.htaccess      # Rutas amigables
-```
-
-## 🚀 Instalación y ejecución
-1. **Colocar la carpeta** en `C:\laragon\www\CastilloPadilla`.
-2. **Crear la base de datos**:
-   ```sql
-   CREATE DATABASE tienda_mvc CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-   ```
-3. **Crear las tablas base** (usuarios y productos). Estructura esperada mínima:
-   ```sql
-   CREATE TABLE usuarios (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       username VARCHAR(50) NOT NULL UNIQUE,
-       password VARCHAR(255) NOT NULL,
-       nombre_completo VARCHAR(100) NOT NULL
-   );
-
-   CREATE TABLE productos (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       sku VARCHAR(50) NOT NULL UNIQUE,
-       nombre VARCHAR(100) NOT NULL,
-       descripcion TEXT NOT NULL,
-       precio_compra DECIMAL(10,2) NOT NULL,
-       precio_venta DECIMAL(10,2) NOT NULL,
-       existencia INT NOT NULL DEFAULT 0,
-       imagen VARCHAR(255) NULL
-   );
-   ```
-4. **Ejecutar el script adicional** `databse.sql` para la columna de imagen y la bitácora:
-   ```sql
-   ALTER TABLE productos
-   ADD COLUMN imagen VARCHAR(255) NULL AFTER existencia;
-
-   CREATE TABLE IF NOT EXISTS bitacora_admin (
-       id INT AUTO_INCREMENT PRIMARY KEY,
-       admin_id INT NULL,
-       username VARCHAR(50) NULL,
-       accion VARCHAR(50) NOT NULL,
-       entidad VARCHAR(50) NULL,
-       entidad_id INT NULL,
-       descripcion VARCHAR(255) NULL,
-       resultado VARCHAR(20) NOT NULL DEFAULT 'exito',
-       ip VARCHAR(45) NULL,
-       user_agent VARCHAR(255) NULL,
-       creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-   );
-   ```
-5. **Crear un usuario admin**:
-   - Para generar el hash puedes usar `passwd.php` (ejemplo con `admin123`):
-     ```bash
-     http://localhost/CastilloPadilla/passwd.php
-     ```
-   - Inserta el usuario en `usuarios`:
-     ```sql
-     INSERT INTO usuarios (username, password, nombre_completo)
-     VALUES ('admin', 'HASH_GENERADO', 'Administrador');
-     ```
-6. **Acceder al proyecto**:
-   - Catálogo: `http://localhost/CastilloPadilla/catalogo`
-   - Login admin: `http://localhost/CastilloPadilla/login`
-
-## 🔗 Rutas amigables
-Ejemplos:
-```
-/catalogo
-/login
-/auth/login
-/productos
-/productos/create
-/productos/edit/3
-/productos/store
-/productos/update
-/productos/delete
-```
-Las rutas se reescriben internamente con `.htaccess` hacia `index.php?route=...`.
-
-## 🖼 Subida de imágenes
-- Se almacenan en `uploads/`.
-- Validaciones:
-  - Tamaño máximo: **2MB**
-  - Formatos: **JPG, PNG, WEBP**
-- En edición, si no se sube una nueva imagen, se conserva la anterior.
-
-## 🔐 Protección CSRF
-Todos los formularios POST incluyen un `csrf_token` oculto.  
-El servidor valida el token antes de ejecutar la acción; si es inválido, se bloquea y muestra mensaje de error.
-
-## 📑 Bitácora de administrador
-Se registran automáticamente:
-- **login** (éxito y fallo)
-- **logout**
-- **crear / actualizar / eliminar** productos
-
-Campos clave que se almacenan:
-- **admin_id / username**: quién realizó la acción.
-- **accion**: tipo de evento.
-- **entidad / entidad_id**: qué registro fue afectado.
-- **descripcion**: detalle legible (SKU, nombre, etc.).
-- **resultado**: `exito` o `fallido`.
-- **ip / user_agent**: origen de la acción.
-- **creado_en**: fecha y hora.
-
-## 📄 Paginación
-- **Admin**: `/productos?page=2`
-- **Catálogo**: `/catalogo?page=2&buscar=texto`
-
-## ✅ Validaciones aplicadas
-- **precio_venta ≥ precio_compra**
-- **existencia ≥ 0**
-- **SKU único**
-- **Formatos y tamaño de imagen**
-
-## ⚙️ Configuración de conexión
-Archivo: `config/Database.php`
-```php
-private string $host = 'localhost';
-private string $dbName = 'tienda_mvc';
-private string $username = 'root';
-private string $password = '';
+config/        # Conexión a BD y Autoload de clases.
+controllers/   # Lógica de negocio y API (Auth, Producto, Public, ProductoApi).
+models/        # Capa de datos (Usuario, Producto, Bitácora).
+views/         # Interfaz de usuario y Layouts (Bootstrap 5).
+uploads/       # Almacenamiento seguro de imágenes de productos.
+index.php      # Enrutador (Router) principal.
+.htaccess      # Configuración de URLs amigables.
 ```
 
-## 🧭 Diagrama de funcionamiento (flujo MVC)
+## 🚀 Instalación y Ejecución
+1.  **Base de Datos**: 
+    - Crea una BD llamada `tienda_mvc`.
+    - Ejecuta `databse.sql` para crear las tablas necesarias (usuarios, productos, bitacora).
+2.  **Configuración**:
+    - Ajusta tus credenciales en `config/Database.php`.
+3.  **Ruta Base**: 
+    - El proyecto detecta automáticamente la `BASE_URL`, asegúrate de tener activado el `mod_rewrite` en tu servidor (Laragon/XAMPP).
+4.  **Usuario Admin**:
+    - Genera un hash de contraseña con `passwd.php` e insértalo en la tabla `usuarios`.
+
+## 🔗 Rutas Amigables
+| Tipo | Ruta Amigable (Limpia) |
+| :--- | :--- |
+| **Público** | `/catalogo` |
+| **Paginación** | `/catalogo/page/1` |
+| **Login** | `/login` |
+| **Admin** | `/productos` |
+| **Admin Paginación** | `/productos/page/1` |
+| **API JSON** | `/api/productos` |
+| **API Detalle** | `/api/productos/5` |
+
+## 🌐 API REST
+La API responde estrictamente en formato JSON con la siguiente estructura:
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "Mensaje de confirmación",
+    "data": { ... }
+}
+```
+**Endpoints:**
+- `GET /api/productos`: Lista completa de productos.
+- `GET /api/productos?buscar=laptop`: Búsqueda de productos.
+- `GET /api/productos/ID`: Detalle de un producto específico.
+
+## 🔐 Seguridad y Bitácora
+- **CSRF**: El sistema genera y valida tokens de sesión en cada petición POST.
+- **Bitácora**: Se registra IP, User-Agent, Acción, Entidad afectada y Resultado para cada acción del administrador.
+
+## 🧭 Diagrama de Funcionamiento
 ```mermaid
 flowchart TD
     A[Navegador] --> B[.htaccess]
-    B --> C[index.php (router)]
-    C --> D[Controller]
-    D --> E[Model (PDO)]
+    B --> C["index.php (Router)"]
+    C --> D[Controllers]
+    D --> E[Models - PDO]
     E --> F[(MySQL)]
-    D --> G[View]
+    D --> G[Views - HTML/Bootstrap]
     G --> A
-    D --> H[uploads/ (imagen)]
+    D --> H[API Response - JSON]
+    H --> A
 ```
 
-## 🧪 Prueba rápida
-1. Inicia sesión como admin.
-2. Crea un producto con imagen.
-3. Verifica que aparezca en catálogo y en el listado admin.
-4. Revisa la tabla `bitacora_admin` para ver los registros.
+## 🎨 Paleta de Colores (Professional Slate)
+- **Background**: `#f1f5f9` (Slate Light)
+- **Navbar**: `#0f172a` (Deep Navy)
+- **Primary**: `#334155` (Slate)
+- **Success**: `#10b981` (Emerald)
+
+---
+*Proyecto desarrollado para la materia de Desarrollo Web Avanzado - UAS.*
