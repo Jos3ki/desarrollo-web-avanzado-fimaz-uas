@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Evita reescribir archivos y carpetas reales
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Ruta raíz
+RewriteRule ^$ index.php [L]
+
+# Ruta con id (editar)
+RewriteRule ^productos/edit/([0-9]+)/?$ index.php?route=productos/edit&id=$1 [L,QSA]
+
+# Rutas amigables generales
+RewriteRule ^(.+?)/?$ index.php?route=$1 [L,QSA]
