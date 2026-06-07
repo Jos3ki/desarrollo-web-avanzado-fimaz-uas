@@ -4,6 +4,7 @@ require_once __DIR__ . '/config/Autoload.php';
 use Controllers\AuthController;
 use Controllers\ProductoController;
 use Controllers\PublicController;
+use Controllers\ProductoApiController;
 
 // Calcula la URL base del proyecto a partir del script en ejecución.
 $baseUrl = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
@@ -47,57 +48,68 @@ function csrf_valid(?string $token): bool
 
 $route = $_GET['route'] ?? 'catalogo';
 
-$authController = new AuthController();
-$productoController = new ProductoController();
-$publicController = new PublicController();
-
 switch ($route) {
+    case 'api/productos':
+        $apiController = new ProductoApiController();
+        $apiController->index();
+        break;
+
     case 'login':
+        $authController = new AuthController();
         $authController->showLogin();
         break;
 
     case 'auth/login':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $authController = new AuthController();
             $authController->login();
         }
         break;
 
     case 'logout':
+        $authController = new AuthController();
         $authController->logout();
         break;
 
     case 'productos':
+        $productoController = new ProductoController();
         $productoController->index();
         break;
 
     case 'productos/create':
+        $productoController = new ProductoController();
         $productoController->create();
         break;
 
     case 'productos/store':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productoController = new ProductoController();
             $productoController->store();
         }
         break;
 
     case 'productos/edit':
+        $productoController = new ProductoController();
         $productoController->edit();
         break;
 
     case 'productos/update':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productoController = new ProductoController();
             $productoController->update();
         }
         break;
 
     case 'productos/delete':
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $productoController = new ProductoController();
             $productoController->delete();
         }
         break;
 
     case 'catalogo':
     default:
+        $publicController = new PublicController();
         $publicController->catalogo();
         break;
 }

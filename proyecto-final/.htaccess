@@ -11,5 +11,8 @@ RewriteRule ^$ index.php [L]
 # Ruta con id (editar)
 RewriteRule ^productos/edit/([0-9]+)/?$ index.php?route=productos/edit&id=$1 [L,QSA]
 
+# Ruta API con id (GET)
+RewriteRule ^api/productos/([0-9]+)/?$ index.php?route=api/productos&id=$1 [L,QSA]
+
 # Rutas amigables generales
 RewriteRule ^(.+?)/?$ index.php?route=$1 [L,QSA]
