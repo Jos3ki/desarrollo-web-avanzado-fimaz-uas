@@ -3,12 +3,12 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', '');
 }
 ?>
-    </div><!-- .container (opened in header) -->
+    </div>
 
     <footer class="bg-dark text-white pt-4 pb-2 mt-auto border-top border-secondary">
         <div class="container">
             <div class="row text-center text-md-start">
-                <!-- Columna: Logos y Nombre -->
+              
                 <div class="col-md-4 col-lg-4 mx-auto mt-2">
                     <div class="mb-2">
                         <img src="<?= BASE_URL ?>/views/img/UAS.png" alt="UAS" class="footer-brand-img me-2" style="max-height: 40px;">
@@ -18,14 +18,14 @@ if (!defined('BASE_URL')) {
                     <p class="small text-white-50">Sistema académico de catálogo y administración de productos.</p>
                 </div>
 
-                <!-- Columna: Info -->
+                
                 <div class="col-md-4 col-lg-4 mx-auto mt-2">
                     <h6 class="text-uppercase mb-2 fw-bold text-warning small">Tecnologías</h6>
                     <p class="small mb-1 text-white-50">PHP 8 (MVC) & MySQL</p>
                     <p class="small mb-1 text-white-50">Bootstrap 5.3 & PDO</p>
                 </div>
 
-                <!-- Columna: Ubicación -->
+                
                 <div class="col-md-4 col-lg-4 mx-auto mt-2">
                     <h6 class="text-uppercase mb-2 fw-bold text-warning small">Institución</h6>
                     <p class="small mb-1 text-white-50">Universidad Autónoma de Sinaloa</p>
@@ -48,7 +48,7 @@ if (!defined('BASE_URL')) {
         </div>
     </footer>
 
-    <!-- Bootstrap Bundle with Popper -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
