@@ -58,7 +58,7 @@ class Database {
         $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         return $pdo;
         } catch(PDOException $e) {
-            die('Error de conexion' . $e->getMessage());
+            die('Error de conexión con la base de datos.');
         }
     }
     

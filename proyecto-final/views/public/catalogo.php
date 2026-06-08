@@ -7,17 +7,41 @@
     </div>
 </div>
 
-<form method="GET" action="<?= BASE_URL ?>/catalogo" class="row g-2 mb-4">
-
+<form id="searchForm" class="row g-2 mb-4">
     <div class="col-md-10">
-        <input type="text" name="buscar" class="form-control"
-               placeholder="Buscar por nombre o descripción"
-               value="<?= htmlspecialchars($termino ?? ''); ?>">
+        <div class="input-group shadow-sm border rounded bg-white">
+            <span class="input-group-text bg-white border-0 text-muted pe-1">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input type="text" id="searchInput" class="form-control border-0 bg-white ps-2"
+                   placeholder="Buscar por nombre o descripción..."
+                   value="<?= htmlspecialchars($termino ?? ''); ?>"
+                   style="box-shadow: none;">
+            <?php if (!empty($termino)): ?>
+                <a href="<?= BASE_URL ?>/catalogo" class="input-group-text bg-white border-0 text-muted px-3 text-decoration-none" 
+                   title="Limpiar búsqueda" onmouseover="this.style.color='#dc3545'" onmouseout="this.style.color='#6c757d'">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </a>
+            <?php endif; ?>
+        </div>
     </div>
     <div class="col-md-2">
-        <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        <button type="submit" class="btn btn-primary w-100 fw-bold shadow-sm">Buscar</button>
     </div>
 </form>
+
+<script>
+document.getElementById('searchForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const term = document.getElementById('searchInput').value.trim();
+    const baseUrl = '<?= BASE_URL ?>';
+    if (term === '') {
+        window.location.href = baseUrl + '/catalogo';
+    } else {
+        window.location.href = baseUrl + '/catalogo/buscar/' + encodeURIComponent(term);
+    }
+});
+</script>
 
 <div class="row">
     <?php if (!empty($productos)): ?>
@@ -72,12 +96,18 @@
 </div>
 
 <?php if (!empty($totalPaginas) && $totalPaginas > 1): ?>
-    <?php $terminoUrl = $termino !== '' ? '?buscar=' . urlencode($termino) : ''; ?>
     <nav aria-label="Paginación del catálogo">
         <ul class="pagination justify-content-center">
             <?php for ($i = 1; $i <= $totalPaginas; $i++): ?>
+                <?php 
+                    if (!empty($termino)) {
+                        $url = BASE_URL . '/catalogo/buscar/' . urlencode($termino) . '/page/' . $i;
+                    } else {
+                        $url = BASE_URL . '/catalogo/page/' . $i;
+                    }
+                ?>
                 <li class="page-item <?= $i === $pagina ? 'active' : ''; ?>">
-                    <a class="page-link" href="<?= BASE_URL ?>/catalogo/page/<?= $i; ?><?= $terminoUrl; ?>">
+                    <a class="page-link" href="<?= $url; ?>">
                         <?= $i; ?>
                     </a>
                 </li>

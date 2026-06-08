@@ -34,7 +34,7 @@ class ProductoApiController {
                 $this->getAll();
             }
         } catch (Exception $e) {
-            $this->respond(500, "Error interno del servidor", null, $e->getMessage());
+            $this->respond(500, "Error interno del servidor");
         }
     }
 
